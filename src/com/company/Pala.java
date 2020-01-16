@@ -13,8 +13,27 @@ public class Pala {
     int xa = 0;
     private Game game;
 
+    public Pala() {
+    }
+
     public Pala(Game game) {
         this.game= game;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public static int getWIDTH() {
+        return WIDTH;
+    }
+
+    public static int getHEIGHT() {
+        return HEIGHT;
+    }
+
+    public static int getY() {
+        return Y;
     }
 
     public void move() {

@@ -5,6 +5,7 @@ import java.awt.*;
 public class Ball {
 
     private static final int DIAMETER = 30;
+    private static final int RADIUS = 15;
 
     int x = 0;
     int y = 0;
@@ -12,6 +13,7 @@ public class Ball {
     int ya = 1;
 
     private Game game;
+    private Pala pala = new Pala();
 
     public Ball(Game game) {
         this.game = game;
@@ -28,7 +30,6 @@ public class Ball {
             game.gameOver();
         if (collision()){
             ya = -1;
-            y = game.pala.getTopY() - DIAMETER;
         }
 
         x = x + xa;
@@ -36,7 +37,33 @@ public class Ball {
     }
 
     private boolean collision() {
-        return game.pala.getBounds().intersects(getBounds());
+
+        double cx = x;
+        double cy = y;
+        double px;
+        double py;
+        double distancia;
+        int width = Pala.getWIDTH();
+        int height = Pala.getHEIGHT();
+        int x = pala.getX();
+        int y = Pala.getY();
+
+        px = cx; // En principio son iguales
+        if ( px < x ) px = x;
+        if ( px > x + width ) px = x + width;
+        py = cy;
+        if ( py < y ) py = y;
+        if ( py > y + height ) py = y + height;
+
+        distancia = Math.sqrt( (cx - px)*(cx - px) + (cy - py)*(cy - py) );
+
+        if ( distancia < DIAMETER ) {
+            // Colisión detectada
+            return true;
+        } else {
+            return false;
+        }
+        //return game.pala.getBounds().intersects(getBounds());
     }
 
     public void paint(Graphics2D g) {
