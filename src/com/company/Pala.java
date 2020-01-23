@@ -13,9 +13,6 @@ public class Pala {
     int xa = 0;
     private Game game;
 
-    public Pala() {
-    }
-
     public Pala(Game game) {
         this.game= game;
     }
@@ -43,7 +40,7 @@ public class Pala {
     }
 
     public void paint(Graphics2D g) {
-        g.fillRect(x, 430, 60, 10);
+        g.fillRect(x, Y, WIDTH, HEIGHT);
     }
 
     public void keyReleased(KeyEvent e) {

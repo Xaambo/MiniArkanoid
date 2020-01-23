@@ -16,6 +16,7 @@ public class Game extends JPanel {
 
     Ball ball = new Ball(this);
     Pala pala = new Pala(this);
+    Brick brick = new Brick(this);
     int speed = 1;
 
     private int getScore() {
@@ -55,6 +56,7 @@ public class Game extends JPanel {
                 RenderingHints.VALUE_ANTIALIAS_ON);
         ball.paint(g2d);
         pala.paint(g2d);
+        brick.paint(g2d);
 
         g2d.setColor(Color.GRAY);
         g2d.setFont(new Font("Verdana", Font.BOLD, 30));
@@ -64,13 +66,13 @@ public class Game extends JPanel {
     public void gameOver() {
         Sound.BACK.stop();
         Sound.GAMEOVER.play();
-        JOptionPane.showMessageDialog(this, "your score is: " + getScore(),
-                "Game Over", JOptionPane.YES_NO_OPTION);
+        JOptionPane.showMessageDialog(this, "u deeeed lmaoooo: " + getScore(),
+                "U DEEEED LMAOOOO", JOptionPane.YES_NO_OPTION);
         System.exit(ABORT);
     }
 
     public static void main(String[] args) throws InterruptedException {
-        JFrame frame = new JFrame("Mini Tennis");
+        JFrame frame = new JFrame("Mini Arkanoid");
         Game game = new Game();
         frame.add(game);
         frame.setSize(300, 500);

@@ -13,7 +13,6 @@ public class Ball {
     int ya = 1;
 
     private Game game;
-    private Pala pala = new Pala();
 
     public Ball(Game game) {
         this.game = game;
