@@ -7,7 +7,7 @@ public class Brick {
     private static final int Y = 50;
     private static final int X = 120;
     private static final int WIDTH = 50;
-    private static final int HEIGHT = 10;
+    private static final int HEIGHT = 20;
 
     private Game game;
 
@@ -15,7 +15,7 @@ public class Brick {
         this.game= game;
     }
 
-    public int getX() {
+    public static int getX() {
         return X;
     }
 

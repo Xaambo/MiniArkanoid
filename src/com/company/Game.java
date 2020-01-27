@@ -40,7 +40,7 @@ public class Game extends JPanel {
             }
         });
         setFocusable(true);
-        Sound.BACK.loop();
+        //Sound.BACK.loop();
     }
 
     private void move() {

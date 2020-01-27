@@ -28,9 +28,19 @@ public class Ball {
             ya = game.speed;
         else if (y + ya > game.getHeight() - DIAMETER)
             game.gameOver();
-        else if (collision()) {
+        else if (collision(Pala.getWIDTH(), Pala.getHEIGHT(), game.pala.getX(), Pala.getY())) {
             ya = -game.speed;
-            game.speed++;
+            //game.speed++;
+        } else if (collision(Brick.getWIDTH(), Brick.getHEIGHT(), Brick.getX(), Brick.getY())) {
+            if (x + xa < Brick.getX())
+                xa = game.speed;
+            else if (x + xa > (Brick.getX() - Brick.getWIDTH()) - DIAMETER)
+                xa = -game.speed;
+            else if (y + ya < Brick.getY() - Brick.getHEIGHT())
+                ya = game.speed;
+            else if (y + ya > Brick.getY() - DIAMETER)
+                ya = -game.speed;
+            //game.speed++;
         } else {
             changeDirection = false;
         }
@@ -43,17 +53,14 @@ public class Ball {
         y = y + ya;
     }
 
-    private boolean collision() {
+    private boolean collision(int width, int height, int x, int y) {
 
-        double cx = x;
-        double cy = y;
+        double cx = this.x;
+        double cy = this.y;
         double px;
         double py;
         double distancia;
-        int width = Pala.getWIDTH();
-        int height = Pala.getHEIGHT();
-        int x = game.pala.getX();
-        int y = Pala.getY() - height;
+        y = y - height;
 
         px = cx; // En principio son iguales
         if ( px < x ) px = x;
