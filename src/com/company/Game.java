@@ -20,7 +20,7 @@ public class Game extends JPanel {
     int speed = 1;
 
     private int getScore() {
-        return speed - 1;
+        return speed - 2;
     }
 
     public Game() {
@@ -56,7 +56,9 @@ public class Game extends JPanel {
                 RenderingHints.VALUE_ANTIALIAS_ON);
         ball.paint(g2d);
         pala.paint(g2d);
-        brick.paint(g2d);
+        if (brick != null) {
+            brick.paint(g2d);
+        }
 
         g2d.setColor(Color.GRAY);
         g2d.setFont(new Font("Verdana", Font.BOLD, 30));

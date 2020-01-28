@@ -4,8 +4,8 @@ import java.awt.*;
 
 public class Ball {
 
-    private static final int DIAMETER = 30;
-    private static final int RADIUS = 15;
+    private static final int DIAMETER = 20;
+    private static final int RADIUS = 10;
 
     int x = 0;
     int y = 0;
@@ -31,22 +31,29 @@ public class Ball {
         else if (collision(Pala.getWIDTH(), Pala.getHEIGHT(), game.pala.getX(), Pala.getY())) {
             ya = -game.speed;
             //game.speed++;
-        } else if (collision(Brick.getWIDTH(), Brick.getHEIGHT(), Brick.getX(), Brick.getY())) {
-            if (x + xa < Brick.getX())
-                xa = game.speed;
-            else if (x + xa > (Brick.getX() - Brick.getWIDTH()) - DIAMETER)
-                xa = -game.speed;
-            else if (y + ya < Brick.getY() - Brick.getHEIGHT())
-                ya = game.speed;
-            else if (y + ya > Brick.getY() - DIAMETER)
-                ya = -game.speed;
+        } else if (game.brick != null) {
+            if (collision(game.brick.getWIDTH(), game.brick.getHEIGHT(), game.brick.getX(), game.brick.getY())) {
+                if ((x + RADIUS) + xa < game.brick.getX()) {
+                    xa = -game.speed;
+                    game.brick = null;
+                } else if ((x + RADIUS) + xa > game.brick.getX() + game.brick.getWIDTH()) {
+                    xa = game.speed;
+                    game.brick = null;
+                } else if ((y + RADIUS) + ya < game.brick.getY()) {
+                    ya = -game.speed;
+                    game.brick = null;
+                } else if ((y + RADIUS) + ya > game.brick.getY()) {
+                    ya = game.speed;
+                    game.brick = null;
+                }
+            }
             //game.speed++;
         } else {
             changeDirection = false;
         }
 
         if (changeDirection) {
-            Sound.BALL.play();
+            //Sound.BALL.play();
         }
 
         x = x + xa;
@@ -60,7 +67,7 @@ public class Ball {
         double px;
         double py;
         double distancia;
-        y = y - height;
+        y = y - RADIUS;
 
         px = cx; // En principio son iguales
         if ( px < x ) px = x;

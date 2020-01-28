@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Brick {
 
-    private static final int Y = 50;
+    private static final int Y = 150;
     private static final int X = 120;
     private static final int WIDTH = 50;
     private static final int HEIGHT = 20;
@@ -39,7 +39,8 @@ public class Brick {
         return new Rectangle(X, Y, WIDTH, HEIGHT);
     }
 
-    public void destroy(Graphics2D g) {
-
+    public Brick destroy(Brick brick) {
+        brick = null;
+        return brick;
     }
 }
